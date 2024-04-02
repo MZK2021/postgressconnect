@@ -1,0 +1,41 @@
+create table milli (id int , name text);
+insert into milli values (2,'alex');
+insert into milli values (3,'tom');
+insert into milli values (4,'abrh');
+
+select * from milli
+
+CREATE TABLE dvd_rentals (
+    rental_id SERIAL PRIMARY KEY,
+    dvd_id INT NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    rental_date DATE NOT NULL,
+    return_date DATE,
+    customer_id INT NOT NULL
+);
+
+
+INSERT INTO dvd_rentals (dvd_id, title, rental_date, return_date, customer_id) VALUES
+(1, 'The Matrix', '2024-03-01', '2024-03-05', 101),
+(2, 'Inception', '2024-03-02', NULL, 102),
+(3, 'The Godfather', '2024-03-02', '2024-03-06', 103),
+(4, 'Pulp Fiction', '2024-03-03', '2024-03-07', 104),
+(5, 'Fight Club', '2024-03-04', NULL, 105),
+(6, 'Forrest Gump', '2024-03-05', '2024-03-10', 106),
+(7, 'The Shawshank Redemption', '2024-03-06', '2024-03-10', 107),
+(8, 'Interstellar', '2024-03-07', NULL, 108),
+(9, 'Gladiator', '2024-03-08', '2024-03-12', 109),
+(10, 'The Dark Knight', '2024-03-09', '2024-03-13', 110),
+(11, 'Avatar', '2024-03-10', NULL, 111),
+(12, 'Titanic', '2024-03-11', '2024-03-15', 112),
+(13, 'Jurassic Park', '2024-03-12', '2024-03-16', 113),
+(14, 'The Avengers', '2024-03-13', NULL, 114),
+(15, 'The Lion King', '2024-03-14', '2024-03-18', 115),
+(16, 'The Terminator', '2024-03-15', '2024-03-19', 116),
+(17, 'Star Wars: Episode IV', '2024-03-16', NULL, 117),
+(18, 'Back to the Future', '2024-03-17', '2024-03-21', 118),
+(19, 'Raiders of the Lost Ark', '2024-03-18', '2024-03-22', 119),
+(20, 'The Silence of the Lambs', '2024-03-19', NULL, 120);
+
+
+select * from dvd_rentals	

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Database Query Interface</title>
+</head>
+<body>
+    <h1>Database Query</h1>
+    <form id="queryForm">
+        <input type="text" id="queryInput" placeholder="Enter query">
+        <button type="submit">Submit</button>
+    </form>
+    <div id="results"></div>
+
+    <script>
+        document.getElementById('queryForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const query = document.getElementById('queryInput').value;
+
+            fetch('http://localhost:3000/query', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ query }),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const resultsElement = document.getElementById('results');
+                // Clear previous results
+                resultsElement.innerHTML = '';
+                // Create a list to display the results
+                const list = document.createElement('ul');
+                data.forEach(item => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `ID: ${item.rental_id}, title: ${item.title}, rental_date: ${item.rental_date}, return_date: ${item.return_date}, customer_id: ${item.customer_id} `;
+                    list.appendChild(listItem);
+                });
+                resultsElement.appendChild(list);
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
